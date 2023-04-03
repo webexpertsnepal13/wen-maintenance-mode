@@ -1,0 +1,40 @@
+ .wmm-maintenance  .img-preview-wrap {
+	/*background: #eee;*/
+	max-width: 200px;
+} 
+
+.wmm-maintenance  .img-preview-wrap img{
+	min-width: 32px;
+	max-width: 100%;
+	height: auto;
+}
+
+.wmm-maintenance  img.layout-preview {
+	width:  180px;
+	max-width: 100%;
+	display: block;
+	margin-top: 15px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	background: #eee;
+	margin-right: 10px;
+}
+.wmm-maintenance  input[name="theme-template"]:checked + i img{
+	background-color: #0085b9;
+}
+
+.wmm-maintenance .tr-hide {
+	display: none;
+}
+
+.wmm-maintenance .tr-visible {
+	display: table-row;
+}
+
+.wmm-maintenance .background-option {
+	display: none;
+}
+
+.wmm-maintenance .background-option-visible {
+	display: table-cell;
+}
