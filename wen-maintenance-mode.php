@@ -9,10 +9,10 @@
 */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'WEN_PLUGIN_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );	
+define( 'WEN_PLUGIN_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WEN_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
-require_once( WEN_PLUGIN_PLUGIN_PATH . '/inc/classes/admin.php' );
+require_once WEN_PLUGIN_PLUGIN_PATH . '/inc/classes/admin.php';
 
 // Delete all option data when plugin is uninstalled
 function wmm_plugin_uninstall(){

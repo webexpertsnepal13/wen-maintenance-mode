@@ -123,23 +123,23 @@ class WMM_Admin {
 
 			<?php
 			if( !isset( $_GET['tab'] ) || $_GET['tab'] == 'general' ){
-				require_once( WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-general.php' );
+				require_once WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-general.php';
 			} elseif( isset( $_GET['tab'] ) && $_GET['tab'] == 'content' ) {
-				require_once( WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-content.php' );
+				require_once WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-content.php';
 			} elseif( isset( $_GET['tab'] ) && $_GET['tab'] == 'social' ) {
-				require_once( WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-social.php' );
+				require_once WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-social.php';
 			} elseif( isset( $_GET['tab'] ) && $_GET['tab'] == 'misc' ) {
-				require_once( WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-misc.php' );
+				require_once WEN_PLUGIN_PLUGIN_PATH . '/inc/views/tab-misc.php';
 			}
-			?>  
+			?>
 		</div>
-		<?php 
+		<?php
 	}
 
 	/*
 	 * Setting Tabs 
 	*/
 	public function wmm_notification(){
-		return	'<div id="message" class="updated fade"><p><strong>' . __( 'Settings saved!', 'wen-maintenance-mode' ) . '</strong></p></div>';
+		return '<div id="message" class="updated fade"><p><strong>' . __( 'Settings saved!', 'wen-maintenance-mode' ) . '</strong></p></div>';
 	}
 }
