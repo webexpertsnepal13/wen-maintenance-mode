@@ -1,10 +1,10 @@
 === WEN Maintenance Mode ===
 Contributors: webexpertsnepal
 Tags: maintenance, maintenance mode, maintenance page, coming soon page, landing page
-Requires at least: 4.4
-Tested up to: 5.3
-Stable tag: 1.2
-Requires PHP: 5.6
+Requires at least: 5.0
+Tested up to: 6.2
+Stable tag: 1.3
+Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,11 @@ Please go through following steps:
 5. Frontend: Default layout when maintenance mode is enabled
 
 == Changelog ==
+
+= 1.3 =
+* Compatibility with WordPress 6.2
+* Updated required PHP and WordPress version
+* Minor fixes
 
 = 1.2 =
 * Fix for page builders
