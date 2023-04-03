@@ -100,19 +100,19 @@
                 <ul class="social">
                     <?php
                     if( !empty( $facebook_link ) ) {
-                        echo '<li><a href="' . $facebook_link . '" target="_blank" style="' . $icon_color . '" class="icon-facebook2"></a></li>';
+                        echo '<li><a href="' . esc_url( $facebook_link ) . '" target="_blank" style="' . $icon_color . '" class="icon-facebook2"></a></li>';
                     }
                     if( !empty( $linkedin_link ) ) {
-                        echo '<li><a href="' . $linkedin_link . '" target="_blank" style="' . $icon_color . '" class="icon-linkedin"></a></li>';
+                        echo '<li><a href="' . esc_url( $linkedin_link ) . '" target="_blank" style="' . $icon_color . '" class="icon-linkedin"></a></li>';
                     }
                     if( !empty( $twitter_link ) ) {
-                        echo '<li><a href="' . $twitter_link . '" target="_blank" style="' . $icon_color . '" class="icon-twitter"></a></li>';
+                        echo '<li><a href="' . esc_url( $twitter_link ) . '" target="_blank" style="' . $icon_color . '" class="icon-twitter"></a></li>';
                     }
                     if( !empty( $instagram_link ) ) {
-                        echo '<li><a href="' . $instagram_link . '" target="_blank" style="' . $icon_color . '" class="icon-instagram"></a></li>';
+                        echo '<li><a href="' . esc_url( $instagram_link ) . '" target="_blank" style="' . $icon_color . '" class="icon-instagram"></a></li>';
                     }
                     if( !empty( $youtube_link ) ) {
-                        echo '<li><a href="' . $youtube_link . '" target="_blank" style="' . $icon_color . '" class="icon-youtube"></a></li>';
+                        echo '<li><a href="' . esc_url( $youtube_link ) . '" target="_blank" style="' . $icon_color . '" class="icon-youtube"></a></li>';
                     }
                     ?>
                 </ul>
