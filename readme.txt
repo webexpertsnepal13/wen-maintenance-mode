@@ -2,7 +2,7 @@
 Contributors: webexpertsnepal
 Tags: maintenance, maintenance mode, maintenance page, coming soon page, landing page
 Requires at least: 6.0
-Tested up to: 6.7.2
+Tested up to: 6.7
 Stable tag: 1.4
 Requires PHP: 7.4
 License: GPLv3
@@ -79,7 +79,7 @@ Please go through following steps:
 == Changelog ==
 
 = 1.4 =
-* Compatibility with WordPress 6.7.2
+* Compatibility with WordPress 6.7
 * Updated required WordPress version
 
 = 1.3 =
