@@ -2,7 +2,7 @@
 /*
  * Plugin Name:  WEN Maintenance Mode
  * Description:  Simple plugin for adding maintenance mode
- * Version:      1.3
+ * Version:      1.4
  * Author:       Web Experts Nepal
  * Author URI:   https://www.webexpertsnepal.com/
  * Text Domain:  wen-maintenance-mode
