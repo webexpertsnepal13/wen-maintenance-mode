@@ -77,10 +77,10 @@
         <div class="maintenance-mode-wrapper <?php echo $wrap_class; ?>" <?php echo $background_attr; ?>>
             <div class="container">
                 <?php
-                if ( $display_logo ) {
-                    $logo = get_option( 'wmm_logo' );
+                $logo = get_option( 'wmm_logo' );
+                if ( $logo ) {
                     ?>
-                	<img src="<?php echo $logo != '' ? $logo :  WEN_PLUGIN_DIR_URL . 'assets/images/default-logo.png'; ?>" class="logo" alt="site-logo">
+                    <img src="<?php echo $logo; ?>" class="logo" alt="site-logo">
                     <?php
                 }
                 ?>

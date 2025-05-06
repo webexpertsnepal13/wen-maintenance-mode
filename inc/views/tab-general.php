@@ -42,7 +42,6 @@
 				<td> 
 					<fieldset>
 						<?php $logo = get_option( 'wmm_logo' ); ?>
-						<!-- <legend class="screen-reader-text"><span><?php _e( 'Logo', 'wen-maintenance-mode' ); ?></span></legend> -->
 						<label for="upload-media">
 							<input type="hidden" name="logo" id="logo" value="<?php echo esc_url_raw( $logo ); ?>"/>
 							<button class="button btn-upload"><?php _e( 'Choose Image', 'wen-maintenance-mode' ); ?></button><br/>
@@ -51,7 +50,7 @@
 							<?php if( $logo ) { ?>
 								<img class="img-preview-logo" src="<?php echo esc_url_raw( $logo ); ?>">
 							<?php } else { ?>
-								<img class="img-preview-logo" src="<?php echo WEN_PLUGIN_DIR_URL . 'assets/images/default-logo.png'; ?>">
+								<img class="img-preview-logo" src="">
 							<?php } ?>
 						</div>
 					</fieldset>
