@@ -54,6 +54,11 @@ class WMM_Admin {
 			update_option( 'wmm_background_image', esc_url( $_POST["background_image"] ) );
 			update_option( 'wmm_background_color', sanitize_hex_color( $_POST["background_color"] ) );
 
+			// Disable maintenance on
+			if ( isset( $_POST['disable_maintenance_mode'] ) ) {
+			    $date_input = sanitize_text_field( $_POST['disable_maintenance_mode'] );
+			    update_option( 'wmm_disable_on', $date_input );
+			}
 			echo $this->wmm_notification();
 		}
 

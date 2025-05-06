@@ -14,6 +14,34 @@
 						</fieldset>
 				</td>
 			</tr>
+			
+			<!-- Remove maintenance on selected timer -->
+			<tr valign="top">
+				<th scope="row"><?php _e( 'Disable Maintenance on', 'wen-maintenance-mode' ); ?></th>
+				<td> 
+					<fieldset>
+						<?php 
+							$disable_maintenance_on = get_option( 'wmm_disable_on' );
+							$date_time_val = '';
+							if ( ! empty( $disable_maintenance_on ) ) {
+								$date = DateTime::createFromFormat( 'Y-m-d\TH:i', $disable_maintenance_on );
+								if ( $date ) {
+									$date_time_val = $date->format( 'Y-m-d\TH:i' );
+								}
+							}
+						?>
+						<legend class="screen-reader-text">
+							<span><?php _e( 'Disable Maintenance Mode ON', 'wen-maintenance-mode' ); ?></span>
+						</legend>
+						<label for="disable_maintenance_mode">
+							<input name="disable_maintenance_mode" type="datetime-local" id="disable_maintenance_mode" value="<?php echo esc_attr( $date_time_val ); ?>">
+							<p> <?php echo __( 'Your local time is ', 'wen-maintenance-mode' ); ?><code><?php echo  current_time('Y-m-d H:i:s');?></code></p>
+						</label>
+					</fieldset>
+
+				</td>
+			</tr>
+
 			<tr valign="top">
 				<th scope="row"><?php _e( 'Choose Template', 'wen-maintenance-mode' ); ?></th>
 				<td> 

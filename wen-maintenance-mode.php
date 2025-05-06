@@ -25,6 +25,17 @@ function wmm_plugin_uninstall(){
 	}
 }
 
+
+// Add cron schedule
+add_filter('cron_schedules', 'wmm_add_every_minute_cron_schedule');
+function wmm_add_every_minute_cron_schedule($schedules) {
+    $schedules['every_minute'] = array(
+        'interval' => 60, // in seconds
+        'display'  => __('Every Minute')
+    );
+    return $schedules;
+}
+
 function wmm_plugin_activate(){
     register_uninstall_hook( __FILE__, 'wmm_plugin_uninstall' );
 
@@ -33,12 +44,20 @@ function wmm_plugin_activate(){
 
 	if( get_option( 'wmm_content' ) === false )
 	    update_option( 'wmm_content', __( 'We are performing scheduled maintenance. Will be back online shortly.', 'wen-maintenance-mode' ) );
+	// Set every minute cron schedule to check and disable the maintenance mode.
+	wmm_setup_cron_events();
 }
 register_activation_hook( __FILE__, 'wmm_plugin_activate' );
 
 // Disable maintenance mode on plugin deactivation
 function wmm_plugin_deactivate() {
     update_option( 'wmm_enabled', '0' );
+
+    // Remove cronjon on plugin deactivation.
+    $timestamp = wp_next_scheduled('wmm_check_disable_maintenance');
+    if ($timestamp) {
+        wp_unschedule_event($timestamp, 'wmm_check_disable_maintenance');
+    }
 }
 register_deactivation_hook( __FILE__, 'wmm_plugin_deactivate' );
  
@@ -47,6 +66,17 @@ add_action( 'plugins_loaded', 'wmm_require_files' );
 function wmm_require_files() {
 	$wmm = new WMM_Admin();
 	$wmm->init();
+
+	// Set every minute cron schedule to check and disable the maintenance mode.
+	wmm_setup_cron_events();
+}
+
+
+// Configure maintenance mode cronjobs
+function wmm_setup_cron_events(){
+	if (!wp_next_scheduled('wmm_check_disable_maintenance')) {
+        wp_schedule_event(time(), 'every_minute', 'wmm_check_disable_maintenance'); 
+    }
 }
 
 /* 
@@ -92,3 +122,24 @@ function wmm_maintenance_status( $wp_admin_bar ) {
         ),
     ));
 }
+
+
+// Trigger cronjob to disable maintenance mode when timer has crossed.
+add_action('wmm_check_disable_maintenance', 'wmm_check_and_disable_maintenance');
+add_action('init', 'wmm_check_and_disable_maintenance');
+function wmm_check_and_disable_maintenance(){
+   $disable_maintenance_on = get_option('wmm_disable_on');
+	if ( $disable_maintenance_on ) {
+		$current_time = current_datetime()->format('Y-m-d H:i:s');
+
+		$disable_maintenance_time =  strtotime($disable_maintenance_on);
+		$current_time_str =  strtotime($current_time);
+
+		$time_diff = $disable_maintenance_time - $current_time_str;
+		if ( $time_diff <= 0 ) {
+			delete_option('wmm_disable_on');
+    		update_option( 'wmm_enabled', '0' );
+		}
+	}
+}
+

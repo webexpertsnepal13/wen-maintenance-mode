@@ -105,6 +105,50 @@
                 ?>
                 <div class="inner" style="<?php echo $content_border_color . $content_color; ?>">
                     <?php echo $content_heading . $content; ?>
+
+                    <!-- Maintenance mode countdown timer -->
+                    <?php 
+                        $disable_maintenance_on = get_option('wmm_disable_on');
+                        $show_timer = false;
+                        if ( $disable_maintenance_on ) {
+                            $current_time = current_datetime()->format('Y-m-d H:i:s');
+
+                            $disable_maintenance_time =  strtotime($disable_maintenance_on);
+                            $current_time_str =  strtotime($current_time);
+
+                            $time_diff = $disable_maintenance_time - $current_time_str; // difference between current and maintenance end time
+                            if ( $time_diff > 0 ) {
+                                $show_timer = true;
+                                $maintenance_time_remaining = floor($time_diff / (60 * 60 *24));
+                                $time_diff -= $maintenance_time_remaining * (60 * 60 * 24);
+                                $hours = floor($time_diff / (60 * 60));
+                                $time_diff -= $hours * (60 * 60);
+
+                                $minutes = floor($time_diff / 60);
+                                $seconds = $time_diff % 60;
+
+                                //pass value to js...
+                                $maintenance_time_js = json_encode([
+                                    'days' => $maintenance_time_remaining,
+                                    'hours' => $hours,
+                                    'minutes' => $minutes,
+                                    'seconds' => $seconds
+                                ]);
+                                ?>
+                                <div class="maintenance-timer">
+                                    <div id="countdown" data-maintenanceoff="<?php echo esc_attr($maintenance_time_js); ?>">
+                                        <h4 style="<?php echo $content_color;?>"><?php echo __( 'Website will be accessible after', 'wen-maintenance-mode' ); ?></h4>
+                                        <span id="days"></span> <?php echo __( 'Days', 'wen-maintenance-mode' ); ?>
+                                        <span id="hours"></span> <?php echo __( 'Hours', 'wen-maintenance-mode' ); ?>
+                                        <span id="minutes"></span> <?php echo __( 'Minutes', 'wen-maintenance-mode' ); ?>
+                                        <span id="seconds"></span> <?php echo __( 'Seconds', 'wen-maintenance-mode' ); ?>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        }
+                    ?>
+
                     <?php if( '' != ( $phone || $email ) ) : ?>
                         <div class="cta-links">
                         <?php
@@ -137,5 +181,8 @@
                 </ul>
             <?php } ?>
         </div><!-- .maintenance-mode-wrapper -->
+        <?php if( $show_timer ) { ?>
+            <script type="text/javascript" src="<?php echo WEN_PLUGIN_DIR_URL . 'assets/js/public.js'; ?>" defer></script>
+        <?php }?>
     </body>
 </html>
