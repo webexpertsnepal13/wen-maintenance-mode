@@ -28,7 +28,6 @@
     </head>
     <body>
         <?php
-        $display_logo          = get_option( 'wmm_display_logo' );
         $templage_choosen      = get_option( 'wmm_template' );  // 1: Default, 2: Customized
         $wrap_class            = $templage_choosen == 1 ? 'plain' : '';
 

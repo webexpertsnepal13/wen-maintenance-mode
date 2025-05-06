@@ -49,7 +49,6 @@ class WMM_Admin {
 			}
 			update_option( 'wmm_enabled', ( isset( $_POST["enable_maintenance_mode"] ) && $_POST["enable_maintenance_mode"] == '1' ) ? '1' : '0' );
 			update_option( 'wmm_template', trim( $_POST["theme-template"] ) );
-			update_option( 'wmm_display_logo', ( isset( $_POST["display_logo"] ) && $_POST["display_logo"] == '1' ) ? '1' : '0' );
 			update_option( 'wmm_logo', esc_url( $_POST["logo"] ) );
 			update_option( 'wmm_background_option', trim( $_POST["background_option"] ) );
 			update_option( 'wmm_background_image', esc_url( $_POST["background_image"] ) );

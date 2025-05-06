@@ -24,20 +24,7 @@
 					</fieldset>
 				</td>
 			</tr>
-			<tr valign="top" class="display-logo">
-				<th scope="row"><?php _e( 'Display Logo', 'wen-maintenance-mode' ); ?></th>
-				<td> 
-					<fieldset class="logo-option">
-						<legend class="screen-reader-text"><span><?php _e( 'Display Logo', 'wen-maintenance-mode' ); ?></span></legend>
-						<?php $display_logo = get_option( 'wmm_display_logo' ) != '' ? get_option( 'wmm_display_logo' ) : '1' ; ?>
-						<label for="display_logo">
-							<input name="display_logo" type="checkbox" id="display_logo" <?php if ( $display_logo == '1' ) echo 'checked="checked"'; ?> value="1">
-							<?php _e( 'Check this option if you want to display logo on maintenance page.', 'wen-maintenance-mode' ); ?>
-						</label>
-					</fieldset>
-				</td>
-			</tr>
-			<tr valign="top" class="upload-logo logo-option <?php echo $display_logo == 1 ? 'tr-visible' : 'tr-hide'; ?>">
+			<tr valign="top" class="upload-logo logo-option">
 				<th scope="row"><?php _e( 'Logo', 'wen-maintenance-mode' ); ?></th>
 				<td> 
 					<fieldset>
