@@ -14,7 +14,9 @@
         <?php echo $gready == '' ? '<meta name="robots" content="noindex,follow" />' : ''; ?>
        
         <title><?php echo $page_title != '' ? $page_title : __( 'Maintenance Mode Enabled', 'wen-maintenance-mode' ); ?></title>
-        <link rel="shortcut icon" href="<?php echo $favicon != '' ? $favicon : WEN_PLUGIN_DIR_URL . 'assets/images/favicon.ico'; ?>">
+        <?php if ( $favicon ) { ?>
+            <link rel="shortcut icon" href="<?php echo $favicon ?>">
+        <?php } ?>
         <link rel="stylesheet" href="<?php echo WEN_PLUGIN_DIR_URL . 'assets/css/style.css'; ?>">
         <?php if( $gready == 'ready' ) : ?>
             <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $gtracking_id; ?>"></script>
