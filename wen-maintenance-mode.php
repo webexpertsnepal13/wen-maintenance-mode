@@ -69,3 +69,26 @@ function wmm_maintenance_mode(){
 		die();
 	}
 }
+
+// Add maintenance mode status in admin bar menu
+add_action( 'admin_bar_menu', 'wmm_maintenance_status', 999 );
+function wmm_maintenance_status( $wp_admin_bar ) {
+	$maintenance_status = get_option( 'wmm_enabled' );
+	$maintenance_on = __( 'Maintenance Mode : ON', 'wen-maintenance-mode' );
+	$maintenance_off = __( 'Maintenance Mode : OFF', 'wen-maintenance-mode' );
+	if ( $maintenance_status == '1' ) {
+		$maintenance_status_title = $maintenance_on;
+	} else {
+		$maintenance_status_title = $maintenance_off;
+	}
+
+	$maintenance_status_html = '<a class="ab-item maintenance-status" data-on="'. $maintenance_on .'" data-off="'. $maintenance_off .'" href="'. home_url( '/wp-admin/options-general.php?page=wen-maintenance-mode' ) .'">' . $maintenance_status_title . '</a>';
+
+    $wp_admin_bar->add_node( array(
+        'id'    => 'wmm-maintenance-status',
+        'title' => $maintenance_status_html,
+        'meta'  => array(
+            'title' => __('Maintenance Mode', 'wen-maintenance-mode'),
+        ),
+    ));
+}

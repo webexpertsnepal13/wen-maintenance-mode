@@ -84,4 +84,14 @@ jQuery(document).ready(function($) {
     return /^ua-\d{4,10}(-\d{1,4})?$/im.test(id);
   }
 
+  // Update maintenance mode status in admin bar on window load
+  $(window).on("load", function () {
+    var wmmStatusElem = $("#enable_maintenance_mode");
+    if (wmmStatusElem.is(":checked")) {
+      $(".maintenance-status").text($(".maintenance-status").data("on"));
+    } else {
+      $(".maintenance-status").text($(".maintenance-status").data("off"));
+    }
+  });
+
 });
