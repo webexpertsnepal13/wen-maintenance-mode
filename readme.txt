@@ -17,8 +17,8 @@ Create an Maintenance Mode Page that takes **less than a minute to install & con
 **Tabs and Options**
 'General' Tab
   * Enable Maintenance Mode
+  * Disable Maintenance on
   * Choose Template
-  * Display Logo
   * Logo
   * Background Options
 'Content' Tab
@@ -77,6 +77,17 @@ Please go through following steps:
 5. Frontend: Default layout when maintenance mode is enabled
 
 == Changelog ==
+
+= 1.5 =
+* Displayed maintenance mode status in admin bar
+* Added a confirmation box to continue without saving when user switches the tab
+* Removed default logo when logo is not selected in the backend
+* Removed option for displaying or not displaying logo and controlled it from the logo field itself
+* Added clear button to media inputs
+* Removed default favicon
+* Displayed site icon from customizer if not overridden from the plugin
+* Added video background as content background option
+* Added option for setting up the timer to disable the maintenance mode
 
 = 1.4 =
 * Compatibility with WordPress 6.7
