@@ -93,7 +93,8 @@ jQuery(document).ready(function($) {
   $('.template-option select').on('change', function(){
     $optionSelected = $(this).val();
     $optionSelected == 2 ? $('.bg-color').addClass('background-option-visible') : $('.bg-color').removeClass('background-option-visible'), $('.bg-color').addClass('background-option');
-    $optionSelected == 1 ? $('.bg-image').addClass('background-option-visible') : $('.bg-image').removeClass('background-option-visible'),$('.bg-image').addClass('background-option') ;
+    $optionSelected == 1 ? $('.bg-image').addClass('background-option-visible') : $('.bg-image').removeClass('background-option-visible'), $('.bg-image').addClass('background-option') ;
+    $optionSelected == 3 ? $(".bg-video").addClass("background-option-visible") : $(".bg-video").removeClass("background-option-visible"), $(".bg-video").addClass("background-option");
   });
 
   // handle ga tracking submission

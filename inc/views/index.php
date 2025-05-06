@@ -7,7 +7,7 @@
         if( !$favicon ) {
             $favicon = get_site_icon_url();
         }
-        
+
         $enable_gtracking = get_option( 'wmm_enable_gtracking' );
         $gtracking_id     = get_option( 'wmm_ga_tracking_id' );
         $gready           = ( $enable_gtracking == 2 && $gtracking_id != '' && preg_match( '/^ua-\d{4,10}(-\d{1,4})?$/im', $gtracking_id ) != 0 ) ? 'ready' : '' ;
@@ -80,6 +80,20 @@
         $icon_color           = 'color: ' . $icon_color . ';';
         ?>
         <div class="maintenance-mode-wrapper <?php echo $wrap_class; ?>" <?php echo $background_attr; ?>>
+            <?php 
+                if( $background_option == '3' ) { 
+                    $bg_video_url = get_option( 'wmm_background_video' );
+                    if( $bg_video_url ){
+                        $video_type = pathinfo($bg_video_url, PATHINFO_EXTENSION);
+                        ?>
+                        <video muted autoplay loop>
+                          <source src="<?php echo esc_url( $bg_video_url); ?>" type="video/<?php echo $video_type ?? 'mp3'; ?>">
+                          <?php echo __( 'Your browser does not support the video tag.', 'wen-maintenance-mode' ); ?>
+                        </video>
+                        <?php
+                    }
+                }
+            ?>
             <div class="container">
                 <?php
                 $logo = get_option( 'wmm_logo' );

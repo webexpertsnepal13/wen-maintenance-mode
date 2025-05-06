@@ -54,33 +54,50 @@
 						<?php $background_option = get_option( 'wmm_background_option' ); ?>
 						<select name="background_option">
 							<option value="1" <?php echo $background_option == 1 ? 'selected="selected"' : ''; ?>><?php _e( 'Image', 'wen-maintenance-mode' ); ?></option>
+							<option value="3" <?php echo $background_option == 3 ? 'selected="selected"' : ''; ?>><?php _e( 'Video', 'wen-maintenance-mode' ); ?></option>
 							<option value="2" <?php echo $background_option == 2 ? 'selected="selected"' : ''; ?>><?php _e( 'Solid Color', 'wen-maintenance-mode' ); ?></option>
 						</select>
 					</fieldset>
 				</td>
 			</tr>
+			
 			<tr valign="top" class="bg-option template-option <?php echo $template_selected == 2 ? 'tr-visible' : 'tr-hide'; ?>">
 				<th scope="row"></th>
 
-				<td class="bg-image <?php echo $background_option == 2 ? 'background-option' : ''; ?>"> 
+				<td class="bg-image <?php echo $background_option != 1 ? 'background-option' : ''; ?>"> 
 					<fieldset>
 						<?php $background_image = get_option('wmm_background_image'); ?>
 						<label for="upload-media">
 							<input type="hidden" name="background_image" id="background_image" value="<?php echo esc_url_raw( $background_image ); ?>" />
-							<button class="button btn-upload"><?php _e( 'Choose Image', 'wen-maintenance-mode' ); ?></button><br/>
+							<button class="button btn-upload"><?php _e( 'Choose Image', 'wen-maintenance-mode' ); ?></button>
+							<button type="button" href="javascript:void(0);" class="button clear-input" style="<?php echo $background_image ? '' : 'display: none'; ?>"><?php echo __( 'Clear', 'wen-maintenance-mode' );?></button><br/>
 						</label>
 						<div class="img-preview-wrap">
-							<?php
-							$background_image = get_option( 'wmm_background_image' );
-							if( $background_image ) { ?>
+							<?php if( $background_image ) { ?>
 								<img class="img-preview-background_image" src="<?php echo esc_url_raw( $background_image ); ?>">
 							<?php } else { ?>
-								<img class="img-preview-background_image" src="<?php echo WEN_PLUGIN_DIR_URL . 'assets/images/default-bg.jpg'; ?>">
+								<img class="img-preview-background_image" src="">
 							<?php } ?>
 						</div>
 					</fieldset>
 				</td>
-				<td class="bg-color <?php echo ( $background_option == 1 || $background_option == '' ) ? 'background-option' : ''; ?>">
+				<td class="bg-video <?php echo $background_option != 3 ? 'background-option' : ''; ?>"> 
+					<fieldset>
+						<?php $background_video = get_option('wmm_background_video'); ?>
+						<label for="upload-media">
+							<input type="hidden" name="background_video" id="background_video" value="<?php echo esc_url_raw( $background_video ); ?>" />
+							<button class="button btn-upload" data-type="video"><?php _e( 'Choose Video', 'wen-maintenance-mode' ); ?></button>
+							<button type="button" href="javascript:void(0);" class="button clear-input" style="<?php echo $background_video ? '' : 'display:none' ?>"><?php echo __( 'Clear', 'wen-maintenance-mode' );?></button><br/>
+						</label>
+						<div class="video-preview-wrap">
+							<?php
+							if ( $background_image ) { ?>
+								<p class="video-preview"><?php echo esc_url_raw( $background_video );?></p>
+								<?php } ?>
+						</div>
+					</fieldset>
+				</td>
+				<td class="bg-color <?php echo ( $background_option != 2 || $background_option == '' ) ? 'background-option' : ''; ?>">
 					<fieldset>
 						<?php $bg_color = get_option( 'wmm_background_color' ); ?>
 						<input class="background-color" name="background_color" type="text" value="<?php echo $bg_color == '' ? '#fff' : $bg_color; ?>" data-default-color="#fff" />
