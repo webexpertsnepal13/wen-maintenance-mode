@@ -1,5 +1,5 @@
+let optionsChanged = false;
 jQuery(document).ready(function($) {
-
 	var meta_image_frame;
   function mediaUploader(uiElement) {
       var targetInputElement = $( "#" +uiElement ),
@@ -55,14 +55,29 @@ jQuery(document).ready(function($) {
 
 
   //color selection
-  $('.background-color, .border_color, .content_color, .icon_color').wpColorPicker();
+  const colorFields = $(
+    ".background-color, .border_color, .content_color, .icon_color"
+  );
 
+  colorFields.each(function () {
+    const $input = $(this);
+    // Initialize the color picker
+    $input.wpColorPicker({
+      change: function (event, ui) {
+        optionsChanged = true;
+      },
+    });
+  });
+
+
+  // Handle template selection change event
   $('.template-option select').on('change', function(){
     $optionSelected = $(this).val();
     $optionSelected == 2 ? $('.bg-color').addClass('background-option-visible') : $('.bg-color').removeClass('background-option-visible'), $('.bg-color').addClass('background-option');
     $optionSelected == 1 ? $('.bg-image').addClass('background-option-visible') : $('.bg-image').removeClass('background-option-visible'),$('.bg-image').addClass('background-option') ;
   });
 
+  // handle ga tracking submission
   $("form").on('submit',function(e) {
     if( $('#enable_gtracking').prop("checked") ) {
       var gaInput = $('input.ga_tracking_id').val();
@@ -94,4 +109,42 @@ jQuery(document).ready(function($) {
     }
   });
 
+
+  // Track changes made in tinyMce editor
+  if (typeof tinymce !== "undefined") {
+    const editorId = "wmm_content";
+
+    const setupEditorChangeListener = function () {
+      const editor = tinymce.get(editorId);
+
+      if (editor) {
+        editor.on("change keyup", function () {
+          optionsChanged = true;
+        });
+      } else {
+        // Retry later if editor isn't ready yet
+        setTimeout(setupEditorChangeListener, 200);
+      }
+    };
+
+    setupEditorChangeListener();
+  }
+
+  // Set options Changed flag to true on changing the input and select fields
+  $("input, select").on("change", function () {
+    optionsChanged = true;
+  });
+
+  // Show alert box before switching the current tab
+  $(".wmm-maintenance a.nav-tab ").on("click", function (e) {
+    if (optionsChanged) {
+      var confirmationText = "Do you want to continue without saving?";
+      if (!confirm(confirmationText)) {
+        e.preventDefault();
+        return false;
+      }
+    }
+  });
+
 });
+
