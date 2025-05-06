@@ -4,6 +4,10 @@
         <?php 
         $page_title       = get_option( 'wmm_page_title' );
         $favicon          = get_option( 'wmm_favicon' );
+        if( !$favicon ) {
+            $favicon = get_site_icon_url();
+        }
+        
         $enable_gtracking = get_option( 'wmm_enable_gtracking' );
         $gtracking_id     = get_option( 'wmm_ga_tracking_id' );
         $gready           = ( $enable_gtracking == 2 && $gtracking_id != '' && preg_match( '/^ua-\d{4,10}(-\d{1,4})?$/im', $gtracking_id ) != 0 ) ? 'ready' : '' ;
