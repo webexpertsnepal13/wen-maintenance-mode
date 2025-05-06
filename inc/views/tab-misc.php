@@ -18,13 +18,16 @@
 						<legend class="screen-reader-text"><span><?php _e( 'Favicon', 'wen-maintenance-mode' ); ?></span></legend>
 						<label for="upload-media">
 							<input type="hidden" name="favicon" id="favicon" value="<?php echo esc_url_raw( $favicon ); ?>"/>
-							<button class="button btn-upload"><?php _e( 'Choose Icon', 'wen-maintenance-mode' ); ?></button><br/>
+							<button class="button btn-upload"><?php _e( 'Choose Icon', 'wen-maintenance-mode' ); ?></button>
+							<button type="button" href="javascript:void(0);" class="button clear-input" style="<?php echo $favicon ? '' : 'display:none'; ?>"><?php echo __('Clear', 'wen-maintenance-mode'); ?></button>
+							
 						</label>
 						<div class="img-preview-wrap">
 							<?php if( $favicon ) { ?>
 								<img class="img-preview-favicon" src="<?php echo esc_url_raw( $favicon ); ?>">
 							<?php } else { ?>
-								<img class="img-preview-favicon" src="<?php echo WEN_PLUGIN_DIR_URL . 'assets/images/favicon.ico'; ?>">
+								<?php $website_favicon = get_site_icon_url(); ?>
+								<img class="img-preview-favicon" src="<?php echo $website_favicon ? $website_favicon : ''; ?>">
 							<?php } ?>
 						</div>
 					</fieldset>

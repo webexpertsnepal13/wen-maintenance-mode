@@ -1,7 +1,7 @@
 let optionsChanged = false;
 jQuery(document).ready(function($) {
 	var meta_image_frame;
-  function mediaUploader(uiElement) {
+  function mediaUploader(uiElement, mediaTYpe) {
       var targetInputElement = $( "#" +uiElement ),
           targetImageElement = $( ".img-preview-" +uiElement );
       if (meta_image_frame) {
@@ -10,6 +10,9 @@ jQuery(document).ready(function($) {
       }
       meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
           title : "Choose Image",
+          library: {
+            type: mediaTYpe, // Restricts selection to image files
+          },
           multiple: false
       });
       meta_image_frame.on('select', function() {
@@ -18,12 +21,28 @@ jQuery(document).ready(function($) {
           targetImageElement.attr('src', media_attachment.url);
       });
       meta_image_frame.open();
+      return true;
   }
-  $('.btn-upload').click(function(e) {
-      e.preventDefault();
-      meta_image_frame = '';
-      var rowInput = $(this).parent('label').find('input').attr('id');
-      mediaUploader(rowInput);
+
+  $(".btn-upload").click(function (e) {
+    e.preventDefault();
+    const mediaType = $(this).attr('data-type') ?? 'image';
+    meta_image_frame = "";
+    var rowInput = $(this).parent("label").find("input").attr("id");
+    var changedMedia = mediaUploader(rowInput, mediaType);
+    if (changedMedia) {
+      $(this).parent().find(".clear-input").show();
+      $(this).parent().next().find("p").show();
+    }
+  });
+
+
+  // Add clear button for image uploader fields
+  $(".clear-input").on("click", function () {
+    $(this).parent().find("input").val("").trigger("change");
+    $(this).parent().next().find("img").attr("src", "");
+    $(this).parent().next().find("p").hide();
+    $(this).hide();
   });
 
 

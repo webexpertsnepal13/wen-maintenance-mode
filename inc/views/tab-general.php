@@ -29,9 +29,12 @@
 				<td> 
 					<fieldset>
 						<?php $logo = get_option( 'wmm_logo' ); ?>
+						<legend class="screen-reader-text"><span><?php _e( 'Logo', 'wen-maintenance-mode' ); ?></span></legend>
 						<label for="upload-media">
 							<input type="hidden" name="logo" id="logo" value="<?php echo esc_url_raw( $logo ); ?>"/>
-							<button class="button btn-upload"><?php _e( 'Choose Image', 'wen-maintenance-mode' ); ?></button><br/>
+							<button class="button btn-upload"><?php _e( 'Choose Image', 'wen-maintenance-mode' ); ?></button>
+							<button type="button" href="javascript:void(0);" class="button clear-input" style="<?php echo $logo ? '' : 'display:none'; ?>"><?php echo __('Clear', 'wen-maintenance-mode'); ?></button>
+
 						</label>
 						<div class="img-preview-wrap">
 							<?php if( $logo ) { ?>
