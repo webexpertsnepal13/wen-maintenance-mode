@@ -1,6 +1,8 @@
 var maintenanceTime = document.getElementById("countdown").dataset.maintenanceoff;
 var maintenanceTime = JSON.parse(maintenanceTime);
 var maintenanceEnabled = true;
+const FULL_DASH = 339.29; // 2πr with r=54
+
 
 function updateCountdown() {
   // Decrement the time
@@ -38,13 +40,26 @@ function updateCountdown() {
 
   if (maintenanceTime.seconds > 0) {
     // Update the UI
-    document.getElementById("days").innerText = maintenanceTime.days ? maintenanceTime.days : 0;
-    document.getElementById("hours").innerText = maintenanceTime.hours ? maintenanceTime.hours : 0;
-    document.getElementById("minutes").innerText = maintenanceTime.minutes ? maintenanceTime.minutes : 0;
-    document.getElementById("seconds").innerText = maintenanceTime.seconds ? maintenanceTime.seconds : 0;
+    // document.getElementById("days").innerText = maintenanceTime.days ? maintenanceTime.days : 0;
+    // document.getElementById("hours").innerText = maintenanceTime.hours ? maintenanceTime.hours : 0;
+    // document.getElementById("minutes").innerText = maintenanceTime.minutes ? maintenanceTime.minutes : 0;
+    // document.getElementById("seconds").innerText = maintenanceTime.seconds ? maintenanceTime.seconds : 0;
+
+    setCircle("days", maintenanceTime.days, 365); // assume max 30 days
+    setCircle("hours", maintenanceTime.hours, 24);
+    setCircle("minutes", maintenanceTime.minutes, 60);
+    setCircle("seconds", maintenanceTime.seconds, 60);
   }
 }
 
+function setCircle(id, value, max) {
+  const val = String(value).padStart(2, "0");
+  document.getElementById(`${id}-value`).textContent = val;
+
+  const circle = document.querySelector(`#${id} .circle-progress`);
+  const offset = FULL_DASH - (FULL_DASH * value) / max;
+  circle.style.strokeDashoffset = offset;
+}
 // Initial update
 updateCountdown();
 

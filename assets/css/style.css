@@ -664,7 +664,7 @@ video {
 
 /* Fresh styles for maintenance timer */
 
-
+/* 
 .maintenance-timer h4 {
     font-size: 1.3em;
     font-weight: 700;
@@ -712,10 +712,59 @@ video {
     #countdown {
         gap: 8px;
         font-size: 1em;
-    }
+    } 
     #countdown span {
         min-width: 28px;
         font-size: 1.1em;
         padding: 6px 0 4px 0;
     }
+}*/
+
+
+.countdown-container {
+    display: flex;
+    gap: 40px;
+    text-align: center;
 }
+
+.circle-timer {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.circle-timer svg {
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 6;
+}
+
+.circle-progress {
+    stroke: white;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s linear;
+}
+
+.timer-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.timer-label {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    /* color: #ccc; */
+    letter-spacing: 0.5px;
+}
+

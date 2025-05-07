@@ -135,14 +135,46 @@
                                     'seconds' => $seconds
                                 ]);
                                 ?>
-                                <div class="maintenance-timer">
-                                    <div id="countdown" data-maintenanceoff="<?php echo esc_attr($maintenance_time_js); ?>">
-                                        <h4 style="<?php echo $content_color;?>"><?php echo __( 'Website will be accessible after', 'wen-maintenance-mode' ); ?></h4>
-                                        <span id="days"></span> <?php echo __( 'Days', 'wen-maintenance-mode' ); ?>
-                                        <span id="hours"></span> <?php echo __( 'Hours', 'wen-maintenance-mode' ); ?>
-                                        <span id="minutes"></span> <?php echo __( 'Minutes', 'wen-maintenance-mode' ); ?>
-                                        <span id="seconds"></span> <?php echo __( 'Seconds', 'wen-maintenance-mode' ); ?>
+                                <div id="countdown" data-maintenanceoff="<?php echo esc_attr($maintenance_time_js); ?>">
+                                    <h4 style="<?php echo $content_color;?>"><?php echo __( 'Website will be accessible after', 'wen-maintenance-mode' ); ?></h4>
+                                    <div class="countdown-container">
+                                        <div class="circle-timer" id="days">
+                                            <svg width="120" height="120">
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                            </svg>
+                                            <div class="timer-value" id="days-value"></div>
+                                            <div class="timer-label">Days</div>
+                                        </div>
+
+                                        <div class="circle-timer" id="hours">
+                                            <svg width="120" height="120">
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                            </svg>
+                                            <div class="timer-value" id="hours-value">00</div>
+                                            <div class="timer-label">Hours</div>
+                                        </div>
+
+                                        <div class="circle-timer" id="minutes">
+                                            <svg width="120" height="120">
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                            </svg>
+                                            <div class="timer-value" id="minutes-value">00</div>
+                                            <div class="timer-label">Minutes</div>
+                                        </div>
+
+                                        <div class="circle-timer" id="seconds">
+                                            <svg width="120" height="120">
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                            </svg>
+                                            <div class="timer-value" id="seconds-value">00</div>
+                                            <div class="timer-label">Seconds</div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <?php
                             }
