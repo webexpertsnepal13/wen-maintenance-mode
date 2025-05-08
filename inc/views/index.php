@@ -155,7 +155,7 @@
                                                 <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0" style="stroke:<?php echo $timer_circle_progress_color; ?>"/>
                                             </svg>
                                             <div class="timer-value" id="hours-value">00</div>
-                                            <div class="timer-label"><?php echo __('Days', 'wen-maintenance-mode'); ?></div>
+                                            <div class="timer-label"><?php echo __('Hours', 'wen-maintenance-mode'); ?></div>
                                         </div>
 
                                         <div class="circle-timer" id="minutes">
