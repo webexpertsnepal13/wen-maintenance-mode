@@ -116,7 +116,10 @@ jQuery(document).ready(function($) {
     }
   });
   function validateGAId(id) {
-    return /^ua-\d{4,10}(-\d{1,4})?$/im.test(id);
+    // return /^ua-\d{4,10}(-\d{1,4})?$/im.test(id);
+    const ga3Pattern = /^UA-\d{4,10}(-\d{1,4})?$/i;
+    const ga4Pattern = /^G-[A-Z0-9]{10,}$/i;
+    return ga3Pattern.test(id) || ga4Pattern.test(id);
   }
 
   // Update maintenance mode status in admin bar on window load
