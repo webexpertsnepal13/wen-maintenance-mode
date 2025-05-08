@@ -50,6 +50,7 @@
 				<td> 
 					<fieldset>
 						<input class="ga_tracking_id" name="ga_tracking_id" type="text" value="<?php echo get_option( 'wmm_ga_tracking_id' ); ?>" placeholder="UA-xxxxxx-xx"/>
+						<p><?php echo __('Use format <code>UA-xxxxxx-xx</code> for GA3 or <code>G-XXXXXXXXXX</code> for GA4', 'wen-maintenance-mode'); ?></p>
 					</fieldset>
 				</td>
 			</tr>
