@@ -60,6 +60,8 @@
             $content          = '<div class="wmm-content">' . wpautop( $content ) . '</div>';
 
         $content_color        = get_option( 'wmm_content_color' );
+        $timer_circle_progress_color = $content_color;
+        $timer_circle_bg_color = $content_color . '20';
         $content_color        = ' color: ' . $content_color . ';';
 
 
@@ -140,8 +142,8 @@
                                     <div class="countdown-container">
                                         <div class="circle-timer" id="days">
                                             <svg width="120" height="120">
-                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
-                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none" style="stroke:<?php echo $timer_circle_bg_color;?>"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0" style="stroke:<?php echo $timer_circle_progress_color; ?>"/>
                                             </svg>
                                             <div class="timer-value" id="days-value"></div>
                                             <div class="timer-label">Days</div>
@@ -149,8 +151,8 @@
 
                                         <div class="circle-timer" id="hours">
                                             <svg width="120" height="120">
-                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
-                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none" style="stroke:<?php echo $timer_circle_bg_color;?>"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0" style="stroke:<?php echo $timer_circle_progress_color; ?>"/>
                                             </svg>
                                             <div class="timer-value" id="hours-value">00</div>
                                             <div class="timer-label">Hours</div>
@@ -158,8 +160,8 @@
 
                                         <div class="circle-timer" id="minutes">
                                             <svg width="120" height="120">
-                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
-                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none" style="stroke:<?php echo $timer_circle_bg_color;?>"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0" style="stroke:<?php echo $timer_circle_progress_color; ?>"/>
                                             </svg>
                                             <div class="timer-value" id="minutes-value">00</div>
                                             <div class="timer-label">Minutes</div>
@@ -167,8 +169,8 @@
 
                                         <div class="circle-timer" id="seconds">
                                             <svg width="120" height="120">
-                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none"/>
-                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+                                                <circle class="circle-bg" cx="60" cy="60" r="54" fill="none" style="stroke:<?php echo $timer_circle_bg_color;?>"/>
+                                                <circle class="circle-progress" cx="60" cy="60" r="54" fill="none" stroke-dasharray="339.29" stroke-dashoffset="0" style="stroke:<?php echo $timer_circle_progress_color; ?>"/>
                                             </svg>
                                             <div class="timer-value" id="seconds-value">00</div>
                                             <div class="timer-label">Seconds</div>

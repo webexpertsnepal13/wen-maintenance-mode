@@ -662,65 +662,6 @@ video {
     height: auto;
 }
 
-/* Fresh styles for maintenance timer */
-
-/* 
-.maintenance-timer h4 {
-    font-size: 1.3em;
-    font-weight: 700;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-}
-
-#countdown {
-    justify-content: center;
-    gap: 18px;
-    font-size: 1.1em;
-    font-weight: 500;
-}
-
-#countdown span {
-    display: inline-block;
-    min-width: 38px;
-    padding: 10px 0 6px 0;
-    background: #f5f5f5;
-    border-radius: 8px;
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #df390f;
-    box-shadow: 0 2px 8px rgba(45,140,240,0.08);
-    margin: 0 2px;
-    transition: background 0.3s, color 0.3s;
-}
-
-#countdown span.label {
-    display: block;
-    font-size: 0.7em;
-    font-weight: 400;
-    color: #888;
-    margin-top: 2px;
-    background: none;
-    box-shadow: none;
-    padding: 0;
-}
-
-@media (max-width: 600px) {
-    .maintenance-timer {
-        padding: 16px 8px;
-        max-width: 98vw;
-    }
-    #countdown {
-        gap: 8px;
-        font-size: 1em;
-    } 
-    #countdown span {
-        min-width: 28px;
-        font-size: 1.1em;
-        padding: 6px 0 4px 0;
-    }
-}*/
-
-
 .countdown-container {
     display: flex;
     gap: 40px;
@@ -738,12 +679,10 @@ video {
 }
 
 .circle-bg {
-    stroke: rgba(255, 255, 255, 0.1);
     stroke-width: 6;
 }
 
 .circle-progress {
-    stroke: white;
     stroke-width: 6;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s linear;
@@ -764,7 +703,6 @@ video {
     left: 50%;
     transform: translateX(-50%);
     font-size: 14px;
-    /* color: #ccc; */
     letter-spacing: 0.5px;
 }
 
