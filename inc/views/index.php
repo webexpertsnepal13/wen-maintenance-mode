@@ -61,7 +61,7 @@
 
         $content_color        = get_option( 'wmm_content_color' );
         $timer_circle_progress_color = $content_color;
-        $timer_circle_bg_color = $content_color . '20';
+        $timer_circle_bg_color = $content_color . '40';
         $content_color        = ' color: ' . $content_color . ';';
 
 
