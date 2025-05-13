@@ -88,6 +88,7 @@ Please go through following steps:
 * Displayed site icon from customizer if not overridden from the plugin
 * Added video background as content background option
 * Added option for setting up the timer to disable the maintenance mode
+* Compatibility with WordPress 6.8
 
 = 1.4 =
 * Compatibility with WordPress 6.7
