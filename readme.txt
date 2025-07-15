@@ -81,6 +81,7 @@ Please go through following steps:
 * Bug fixes for background type video not being saved
 * Fixes for clear button displaying in backend when no media selected
 * Bug fixes for default color settings
+* Bug fix for Maintenance Mode status displaying status as OFF while navigating to other tabs
 
 = 1.5 =
 * Displayed maintenance mode status in admin bar
