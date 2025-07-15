@@ -81,8 +81,13 @@ jQuery(document).ready(function($) {
       optionSelected = $(this).prop('checked') ? $(this).val() : '';
     } else{
       optionSelected = $(this).val();
+      var backgroundOptionSelected = $( 'select[name="background_option"]' ).val();
+      if (backgroundOptionSelected == 1) {
+        $(".bg-image").addClass("background-option-visible");
+      } 
     }
-    optionSelected == 2 ? $('tr.'+parentFieldsetClass).addClass('tr-visible') : $('tr.'+parentFieldsetClass).removeClass('tr-visible'),$('tr.'+parentFieldsetClass).addClass('tr-hide');
+    optionSelected == 2 ? $('tr.'+parentFieldsetClass).addClass('tr-visible') : $('tr.'+parentFieldsetClass).removeClass('tr-visible'),
+    $('tr.'+parentFieldsetClass).addClass('tr-hide');
   });
 
   $('input#display_logo').on('change', function(e) {
@@ -94,7 +99,6 @@ jQuery(document).ready(function($) {
     } else {
       value = '0';
     }
-    console.log(value);
     value == 1 ? $('tr.'+parentFieldsetClass).addClass('tr-visible') : $('tr.'+parentFieldsetClass).removeClass('tr-visible'),$('tr.'+parentFieldsetClass).addClass('tr-hide');
   });
 
@@ -132,7 +136,6 @@ jQuery(document).ready(function($) {
          return false;
       } else {
         gaInput = validateGAId(gaInput);
-        // console.log(gaInput); return false;
         if( gaInput == false ) {
           $('input.ga_tracking_id').css("border","1px solid red");
           return false;

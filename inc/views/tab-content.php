@@ -55,7 +55,32 @@
 				<th scope="row"><?php _e( 'Content Text Color', 'wen-maintenance-mode' ); ?></th>
 				<td> 
 					<fieldset>
-						<?php $content_color = get_option( 'wmm_content_color' ); ?>
+						<?php 
+							$content_color = get_option( 'wmm_content_color' ); 
+							$content_color_default = '#000';
+							
+							$template_selected = get_option( 'wmm_template' );
+							
+							if( !$content_color ) {
+								// Generate default value for content color based on selected template and background options
+								if( 1 == $template_selected ) { // Default template selected
+									$content_color_default = '#000';
+								} else { // Customized template selected
+									$background_option = get_option( 'wmm_background_option' );
+									$has_background_image = get_option( 'wmm_background_image' );
+									$has_background_video = get_option( 'wmm_background_video' );
+
+									if( 1 == $background_option  && !$has_background_image ) { // Image
+										$content_color_default	= '#fff';
+									} elseif( 3 == $background_option && !$has_background_video) { // Video
+										$content_color_default 	= '#000';
+									} else { // Solid color
+										$content_color_default        = '#000';
+									}
+								}
+								$content_color = $content_color_default;
+							}
+						?>
 						<input class="content_color" name="content_color" type="text" value="<?php echo $content_color == '' ? '#000' : $content_color; ?>" data-default-color="#000" />
 					</fieldset>
 				</td>

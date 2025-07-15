@@ -91,11 +91,10 @@
 			
 			<tr valign="top" class="bg-option template-option <?php echo $template_selected == 2 ? 'tr-visible' : 'tr-hide'; ?>">
 				<th scope="row"></th>
-
 				<td class="bg-image <?php echo $background_option != 1 ? 'background-option' : ''; ?>"> 
 					<fieldset>
 						<?php $background_image = get_option('wmm_background_image'); ?>
-						<label for="upload-media">
+						<label>
 							<input type="hidden" name="background_image" id="background_image" value="<?php echo esc_url_raw( $background_image ); ?>" />
 							<button class="button btn-upload"><?php _e( 'Choose Image', 'wen-maintenance-mode' ); ?></button>
 							<button type="button" href="javascript:void(0);" class="button clear-input" style="<?php echo $background_image ? '' : 'display: none'; ?>"><?php echo __( 'Clear', 'wen-maintenance-mode' );?></button><br/>

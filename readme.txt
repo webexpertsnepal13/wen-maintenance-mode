@@ -78,8 +78,9 @@ Please go through following steps:
 
 == Changelog ==
 = 1.5.1 =
-* Bugfixes for background type video not being saved
+* Bug fixes for background type video not being saved
 * Fixes for clear button displaying in backend when no media selected
+* Bug fixes for default color settings
 
 = 1.5 =
 * Displayed maintenance mode status in admin bar

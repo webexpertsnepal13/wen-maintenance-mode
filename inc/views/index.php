@@ -40,15 +40,17 @@
         $background_option     = get_option( 'wmm_background_option' ); // 1: Image, 2: Color, 3: Video
         $background_image      = $background_color = $background_attr = '';
         if ( $templage_choosen != 1 ) {
-            if( $background_option == 1 ) { // Backgroubd Image
+            if( $background_option == 1 ) { // Background Image
                 $background_image      = get_option( 'wmm_background_image' );
                 $background_image      = $background_image != '' ? 'style="background: url(' . $background_image . ') no-repeat center; background-size: cover;"' : '';
                 $default_bg_image      = 'style="background: url(' . WEN_PLUGIN_DIR_URL . 'assets/images/default-bg.jpg) no-repeat center; background-size: cover;"';
                 $background_attr      = $background_image != '' ? $background_image : $default_bg_image;
-            } else {
+            } elseif( $background_option == 2 ) { // Solid Color
                 $background_color      = get_option( 'wmm_background_color' );
                 $background_color      = $background_color != ''  ? $background_color : '#ffffff';
                 $background_attr      = 'style="background-color: ' . $background_color . ';"';
+            } else { // Background Video 
+                $background_attr      = '';
             }
         }
 
@@ -66,12 +68,16 @@
         $has_background_image = get_option( 'wmm_background_image' );
         $has_background_video = get_option( 'wmm_background_video' );
 
-        if( $background_option == 1 && !$has_background_image ) {
-            $content_color        = $content_color ? ' color: '. $content_color : 'color: #fff';
-        } elseif( !$has_background_video && $background_option == 3 ) {
-            $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+        if( $templage_choosen == 2 ) {
+            if( $background_option == 1 && !$has_background_image ) {
+                $content_color        = $content_color ? ' color: '. $content_color : 'color: #fff';
+            } elseif( !$has_background_video && $background_option == 3 ) {
+                $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+            } else {
+                $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+            }
         } else {
-            $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+            $content_color = $content_color ? ' color: '. $content_color : 'color: #000';
         }
 
 
