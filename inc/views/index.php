@@ -61,25 +61,29 @@
         if ( !empty( $content ) )
             $content          = '<div class="wmm-content">' . wpautop( $content ) . '</div>';
 
-        $content_color        = get_option( 'wmm_content_color' );
-        $timer_circle_progress_color = $content_color;
-        $timer_circle_bg_color = $content_color . '40';
-
+        $content_color = $content_color_value = get_option( 'wmm_content_color' );
+       
         $has_background_image = get_option( 'wmm_background_image' );
         $has_background_video = get_option( 'wmm_background_video' );
 
         if( $templage_choosen == 2 ) {
             if( $background_option == 1 && !$has_background_image ) {
-                $content_color        = $content_color ? ' color: '. $content_color : 'color: #fff';
+                $content_color        = $content_color_value ? ' color: '. $content_color_value : 'color: #ffffff';
+                $content_color_value = $content_color_value ? $content_color_value : '#ffffff';
             } elseif( !$has_background_video && $background_option == 3 ) {
-                $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+                $content_color        = $content_color_value ? ' color: '. $content_color_value : 'color: #000000';
+                $content_color_value = $content_color_value ? $content_color_value : '#000000';
             } else {
-                $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+                $content_color        = $content_color_value ? ' color: '. $content_color_value : 'color: #000000';
+                $content_color_value = $content_color_value ? $content_color_value : '#000000';
             }
         } else {
-            $content_color = $content_color ? ' color: '. $content_color : 'color: #000';
+            $content_color = $content_color_value ? ' color: '. $content_color_value : 'color: #000000';
+            $content_color_value = $content_color_value ? $content_color_value : '#000000';
         }
-
+        
+        $timer_circle_progress_color = $content_color_value;
+        $timer_circle_bg_color = $content_color_value . '40';
 
         $content_border       = get_option( 'wmm_content_border' );
         $content_border_color = get_option( 'wmm_border_color' );

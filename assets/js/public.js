@@ -40,11 +40,6 @@ function updateCountdown() {
 
   if (maintenanceTime.seconds > 0) {
     // Update the UI
-    // document.getElementById("days").innerText = maintenanceTime.days ? maintenanceTime.days : 0;
-    // document.getElementById("hours").innerText = maintenanceTime.hours ? maintenanceTime.hours : 0;
-    // document.getElementById("minutes").innerText = maintenanceTime.minutes ? maintenanceTime.minutes : 0;
-    // document.getElementById("seconds").innerText = maintenanceTime.seconds ? maintenanceTime.seconds : 0;
-
     setCircle("days", maintenanceTime.days, 365); // assume max 30 days
     setCircle("hours", maintenanceTime.hours, 24);
     setCircle("minutes", maintenanceTime.minutes, 60);
