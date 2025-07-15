@@ -112,16 +112,17 @@
 				<td class="bg-video <?php echo $background_option != 3 ? 'background-option' : ''; ?>"> 
 					<fieldset>
 						<?php $background_video = get_option('wmm_background_video'); ?>
-						<label for="upload-media">
+						<label>
 							<input type="hidden" name="background_video" id="background_video" value="<?php echo esc_url_raw( $background_video ); ?>" />
-							<button class="button btn-upload" data-type="video"><?php _e( 'Choose Video', 'wen-maintenance-mode' ); ?></button>
+							<button class="button btn-upload" data-type="video" data-title="Choose Video"><?php _e( 'Choose Video', 'wen-maintenance-mode' ); ?></button>
 							<button type="button" href="javascript:void(0);" class="button clear-input" style="<?php echo $background_video ? '' : 'display:none' ?>"><?php echo __( 'Clear', 'wen-maintenance-mode' );?></button><br/>
 						</label>
 						<div class="video-preview-wrap">
-							<?php
-							if ( $background_image ) { ?>
-								<p class="video-preview"><?php echo esc_url_raw( $background_video );?></p>
+							<p class="video-preview">
+								<?php if ( $background_video ) { ?>
+									<?php echo esc_url_raw( $background_video );?>
 								<?php } ?>
+							</p>
 						</div>
 					</fieldset>
 				</td>

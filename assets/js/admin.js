@@ -1,41 +1,67 @@
 let optionsChanged = false;
 jQuery(document).ready(function($) {
 	var meta_image_frame;
-  function mediaUploader(uiElement, mediaTYpe) {
-      var targetInputElement = $( "#" +uiElement ),
-          targetImageElement = $( ".img-preview-" +uiElement );
-      if (meta_image_frame) {
-          meta_image_frame.open();
-          return;
-      }
-      meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
-          title : "Choose Image",
-          library: {
-            type: mediaTYpe, // Restricts selection to image files
-          },
-          multiple: false
-      });
-      meta_image_frame.on('select', function() {
-          var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
-          targetInputElement.val(media_attachment.url);
-          targetImageElement.attr('src', media_attachment.url);
-      });
+  function mediaUploader(
+    uiElement,
+    mediaType,
+    mediaTitle = "Choose Image",
+    onSelectCallback
+  ) {
+    const targetInputElement = $("#" + uiElement);
+    const targetImageElement = $(".img-preview-" + uiElement);
+
+    if (meta_image_frame) {
       meta_image_frame.open();
-      return true;
+      return;
+    }
+
+    meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
+      title: mediaTitle, // ✅ Use dynamic title here
+      library: {
+        type: mediaType,
+      },
+      multiple: false,
+    });
+
+    meta_image_frame.on("select", function () {
+      const media_attachment = meta_image_frame
+        .state()
+        .get("selection")
+        .first()
+        .toJSON();
+      targetInputElement.val(media_attachment.url);
+      targetImageElement.attr("src", media_attachment.url);
+
+      if (typeof onSelectCallback === "function") {
+        onSelectCallback();
+      }
+    });
+
+    meta_image_frame.open();
   }
+
 
   $(".btn-upload").click(function (e) {
     e.preventDefault();
-    const mediaType = $(this).attr('data-type') ?? 'image';
-    meta_image_frame = "";
-    var rowInput = $(this).parent("label").find("input").attr("id");
-    var changedMedia = mediaUploader(rowInput, mediaType);
-    if (changedMedia) {
-      $(this).parent().find(".clear-input").show();
-      $(this).parent().next().find("p").show();
-    }
-  });
 
+    const mediaType = $(this).attr("data-type") ?? "image";
+    const $input = $(this).parent("label").find("input");
+    const inputId = $input.attr("id");
+    const $clearBtn = $(this).parent().find(".clear-input");
+    const $hintText = $(this).parent().next().find("p");
+    
+    const mediaTitle = $(this).attr("data-title") ?? "Choose Image"; // Read dynamic title
+
+    meta_image_frame = ""; // reset global frame
+
+    mediaUploader(inputId, mediaType, mediaTitle, function () {
+      // This callback runs only after an image is selected
+      if ($input.val()) {
+        $clearBtn.show();
+        $hintText.text($input.val()).show();
+      }
+    });
+  });
 
   // Add clear button for image uploader fields
   $(".clear-input").on("click", function () {

@@ -53,6 +53,7 @@ class WMM_Admin {
 			update_option( 'wmm_background_option', trim( $_POST["background_option"] ) );
 			update_option( 'wmm_background_image', esc_url( $_POST["background_image"] ) );
 			update_option( 'wmm_background_color', sanitize_hex_color( $_POST["background_color"] ) );
+			update_option( 'wmm_background_video', esc_url( $_POST['background_video'] ) );
 
 			// Disable maintenance on
 			if ( isset( $_POST['disable_maintenance_mode'] ) ) {

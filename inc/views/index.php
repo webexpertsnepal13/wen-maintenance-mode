@@ -37,10 +37,10 @@
         $templage_choosen      = get_option( 'wmm_template' );  // 1: Default, 2: Customized
         $wrap_class            = $templage_choosen == 1 ? 'plain' : '';
 
-        $background_option     = get_option( 'wmm_background_option' ); // 1: Image, 2: Color
+        $background_option     = get_option( 'wmm_background_option' ); // 1: Image, 2: Color, 3: Video
         $background_image      = $background_color = $background_attr = '';
         if ( $templage_choosen != 1 ) {
-            if( $background_option == 1 ) {
+            if( $background_option == 1 ) { // Backgroubd Image
                 $background_image      = get_option( 'wmm_background_image' );
                 $background_image      = $background_image != '' ? 'style="background: url(' . $background_image . ') no-repeat center; background-size: cover;"' : '';
                 $default_bg_image      = 'style="background: url(' . WEN_PLUGIN_DIR_URL . 'assets/images/default-bg.jpg) no-repeat center; background-size: cover;"';
@@ -62,7 +62,17 @@
         $content_color        = get_option( 'wmm_content_color' );
         $timer_circle_progress_color = $content_color;
         $timer_circle_bg_color = $content_color . '40';
-        $content_color        = ' color: ' . $content_color . ';';
+
+        $has_background_image = get_option( 'wmm_background_image' );
+        $has_background_video = get_option( 'wmm_background_video' );
+
+        if( $background_option == 1 && !$has_background_image ) {
+            $content_color        = $content_color ? ' color: '. $content_color : 'color: #fff';
+        } elseif( !$has_background_video && $background_option == 3 ) {
+            $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+        } else {
+            $content_color        = $content_color ? ' color: '. $content_color : 'color: #000';
+        }
 
 
         $content_border       = get_option( 'wmm_content_border' );
